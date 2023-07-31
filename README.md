@@ -1,5 +1,5 @@
 ### BLOCK OUTGOING TRAFFIC BY COUNTRY 
-## این اسکریپت تمام ترافیک خروجی به IP مقصد ایران شامل اکثر دیتاسنترهای ایران را مسدود می کند.
+### این اسکریپت تمام ترافیک خروجی به IP مقصد ایران  china russia شامل اکثر دیتاسنترهای ایران را مسدود می کند.
 
 
 ❗ UPDATE:
@@ -21,7 +21,8 @@ apt update && apt upgrade -y && wget https://raw.githubusercontent.com/opiran-cl
 ```
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Written by OPIran
+#### Written by OPIran
+
 TELEGRAM CHANNEL: https://t.me/OPIranv2rayproxy
 
 TELEGRAM GROUP: https://t.me/OPIranCluB
