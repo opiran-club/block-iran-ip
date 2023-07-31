@@ -1,23 +1,27 @@
-# block-iran-ip
+### BLOCK OUTGOING TRAFFIC BY COUNTRY 
 ## این اسکریپت تمام ترافیک خروجی به IP مقصد ایران شامل اکثر دیتاسنترهای ایران را مسدود می کند.
 
 
-### install requirments package
-```
-apt install ufw libapache2-mod-geoip geoip-database -y && a2enmod geoip && apt install geoip-bin -y
-```
-### open your desire ports
+❗ UPDATE:
+- ADDED CHINA
+- ADDED RUSSIA
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❗ Requirements
+
+- run with root previllage
+- no any requirements, they will be install
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+❗❗ INSTALLATION
 ```
-ufw allow ssh
-ufw allow http
-ufw allow https
+apt update && apt upgrade -y && wget https://raw.githubusercontent.com/opiran-club/block-iran-ip/main/block-ip.sh && chmod +x block-ip.sh && ./block-ip.sh
 ```
-### download ip`s and set the rull to firewall with below command
-```
-curl -sSL https://www.ipdeny.com/ipblocks/data/countries/ir.zone | awk '{print "sudo ufw deny out from any to " $1}' | bash
-```
-### at the end enable the firewall 
-```
-ufw enable
-```
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Written by OPIran
+TELEGRAM CHANNEL: https://t.me/OPIranv2rayproxy
+
+TELEGRAM GROUP: https://t.me/OPIranCluB
