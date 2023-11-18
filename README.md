@@ -17,7 +17,7 @@
 
 ❗❗ INSTALLATION
 ```
-apt update && apt upgrade -y && wget https://raw.githubusercontent.com/opiran-club/block-iran-ip/main/block-ip.sh && chmod +x block-ip.sh && ./block-ip.sh
+bash <(curl -s https://raw.githubusercontent.com/opiran-club/block-iran-ip/main/block-ip.sh --ipv4)
 ```
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
