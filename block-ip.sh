@@ -45,7 +45,7 @@ print_table() {
     clear
     logo
     echo -e "\e[93m╔═══════════════════════════════════════════════╗\e[0m"  
-    echo -e "\e[93m║            \e[94mBlock IP                           \e[93m║\e[0m"   
+    echo -e "\e[93m║            \e[95mBLOCK IP MENU                      \e[93m║\e[0m"   
     echo -e "\e[93m╠═══════════════════════════════════════════════╣\e[0m"
     echo ""
     echo -e "${BLUE}   ${tg_title}   ${NC}"
