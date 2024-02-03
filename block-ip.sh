@@ -31,6 +31,12 @@ block_country_ips() {
   curl -sSL "https://www.ipdeny.com/ipblocks/data/countries/$country_code.zone" | awk '{print "sudo ufw deny out from any to " $1}' | bash
 }
 
+block_incoming_country_ips() {
+  country_code="$1"
+  echo -e "\e[33mBlocking incoming traffic from $country_code\e[0m"
+  curl -sSL "https://www.ipdeny.com/ipblocks/data/countries/$country_code.zone" | awk '{print "sudo ufw deny in from " $1 " to any"}' | bash
+}
+
 flush() {
 echo -e "\e[33mUninstalling and flushing UFW rules\e[0m"
   sudo ufw reset
@@ -79,11 +85,13 @@ echo -e "\e[31m1)\e[0m \e[36mIran\e[0m"
 echo -e "\e[31m2)\e[0m \e[36mChina\e[0m"
 echo -e "\e[31m3)\e[0m \e[36mRussia\e[0m"
 echo ""
-echo -e "\e[31m4)\e[0m \e[36mUninstall and flush rules\e[0m"
+echo -e "\e[31m4)\e[0m \e[36mBlock incoming traffic from specific locations\e[0m"
+echo ""
+echo -e "\e[31m5)\e[0m \e[36mUninstall and flush rules\e[0m"
 echo ""
 printf "\e[93m+-----------------------------------------------+\e[0m\n" 
 
-read -p "Enter the number of your choice (1/2/3): " choice
+read -p "Enter the number of your choice (1-5): " choice
 
 
 case "$choice" in
@@ -97,6 +105,47 @@ case "$choice" in
     block_country_ips "ru"
     ;;
   4)
+          clear
+        # Print the question and response table
+        print_table
+        
+        # Ask the user which country IPs to block
+        echo -e "\e[31m!!\e[0m\e[32m Its the common script to block outgoing traffic base on"
+        echo -e "country with UFW so after that allow your required ports\e[0m"
+        printf "\e[93m+-----------------------------------------------+\e[0m\n" 
+        echo ""
+        echo -e "\e[33mWhich country IPs do you want to block for incoming traffic?\e[0m"
+        echo ""
+        echo -e "\e[31m1)\e[0m \e[36mIran\e[0m"
+        echo -e "\e[31m2)\e[0m \e[36mChina\e[0m"
+        echo -e "\e[31m3)\e[0m \e[36mRussia\e[0m"
+        echo ""
+        echo -e "\e[31m3)\e[0m \e[36mBack\e[0m"
+        echo ""
+        printf "\e[93m+-----------------------------------------------+\e[0m\n"
+        
+        read -p "Enter the number of your choice (1-3): " choice
+        
+        case "$choice" in
+          1)
+            block_incoming_country_ips "ir"
+            ;;
+          2)
+            block_incoming_country_ips "cn"
+            ;;
+          3)
+            block_incoming_country_ips "ru"
+            ;;
+          4)
+            exit 1
+            ;;
+          *)
+            echo "\e[31mInvalid choice. Exiting...\e[0m"
+            exit 1
+            ;;
+        esac
+        ;;
+  5)
     flush
     ;;
   *)
